@@ -121,7 +121,7 @@ CPPOPS  = $(OPT)                                        \
 # Assembler flags
 ############################################################################################
 
-ifeq ($(LD), $(TOOLCHAIN)-as)
+ifeq ($(AS), $(TOOLCHAIN)-as)
 ASOPS =  -march=rv32imac          \
          -alh 
 else
