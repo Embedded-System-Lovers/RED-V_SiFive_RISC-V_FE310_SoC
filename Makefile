@@ -227,7 +227,7 @@ $(OBJ_DIR)/%.o : %.c
 	@-$(PYTHON) CompilerErrorFormater.py $(OBJ_DIR)/$(basename $(@F)).err -COLOR
 
 
-ifeq ($(LD), $(TOOLCHAIN)-as)
+ifeq ($(AS), $(TOOLCHAIN)-as)
 $(OBJ_DIR)/%.o : %.s
 	@-echo +++ compile: $(subst \,/,$<) to $(subst \,/,$@)
 	@$(AS) $(ASOPS) $< -o $(OBJ_DIR)/$(basename $(@F)).o 2> $(OBJ_DIR)/$(basename $(@F)).err >$(OBJ_DIR)/$(basename $(@F)).lst
