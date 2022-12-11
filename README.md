@@ -1,7 +1,6 @@
 RED-V_SiFive_RISC-V_FE310_SoC
 ==================
-Bare metal programming on the RED-V Thing Plus board (SiFive RISC-V FE310 SoC)
-
+Bare metal programming on the RED-V Thing Plus board (SiFive RISC-V FE310 SoC).
 
 This repository implements an entirely manually-written, pure
 _bare_ _metal_ Blinky Project for the SiFive RISC-V FE310 SoC
@@ -46,7 +45,8 @@ and assembly list file are created in the `Output`directory.
 
 If `gcc-riscv64-unknown-elf` is not installed, it can easily
 be obtained [here](https://github.com/sifive/freedom-tools/releases).
-Add the path to the RISC-V GCC tools' bin folder in the usual `*nix` way.
+Add the path of the RISC-V GCC tools' bin folder to `$PATH`
+in the usual `*nix` way.
 
 ## Continuous Integration
 
