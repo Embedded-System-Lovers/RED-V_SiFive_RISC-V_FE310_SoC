@@ -44,8 +44,9 @@
 //-----------------------------------------------------------------------------------------
 void FE310_HwInitialization(void)
 {
-  GPIO0->output_en.bit.pin5 = 1;
+  /* Set output high (and set value before switching to output). */
   GPIO0->output_val.bit.pin5 = 1;
+  GPIO0->output_en.bit.pin5 = 1;
 
   /* Disable all PLIC interrupts */
   PLIC->enable[0] = 0;

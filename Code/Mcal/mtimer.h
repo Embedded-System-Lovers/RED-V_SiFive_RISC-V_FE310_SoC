@@ -32,10 +32,10 @@
 #define MTIME64     *(volatile uint64*)(&(CLINT->mtime))
 
 /* macros for mtime timeout */
-#define MTIME_FREQ_KHZ         32768ull
+#define MTIME_FREQ_KHZ         (uint64)32768ull
 #define MTIME_TIMEOUT_S(t)     (uint64)(MTIME_FREQ_KHZ * t)
-#define MTIME_TIMEOUT_MS(t)    (uint64)((MTIME_FREQ_KHZ / 1000) * t )
-#define MTIME_TIMEOUT_US(t)    (uint64)((MTIME_FREQ_KHZ / 1000000) * t)
+#define MTIME_TIMEOUT_MS(t)    (uint64)((uint64)(MTIME_FREQ_KHZ * t) / 1000U)
+#define MTIME_TIMEOUT_US(t)    (uint64)((uint64)(MTIME_FREQ_KHZ * t) / 1000000UL)
 
 //=========================================================================================
 // Function prototypes

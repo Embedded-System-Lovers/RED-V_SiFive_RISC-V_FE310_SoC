@@ -22,6 +22,8 @@
 #include "mtimer.h"
 #include "riscv-csr.h"
 
+#define MTIME_TIMEOUT_LED_PHASE 1000U
+
 //=====================================================================================================
 // Functions prototype
 //=====================================================================================================
@@ -45,7 +47,7 @@ void Isr_MachineTimerInterrupt(void);
 int main(void)
 {
   /* start the mtimer */
-  mtimer_StartTimer(MTIME_TIMEOUT_MS(500));
+  mtimer_StartTimer(MTIME_TIMEOUT_MS(MTIME_TIMEOUT_LED_PHASE));
 
   /* endless loop*/
   while(1);
@@ -65,9 +67,9 @@ void Isr_MachineTimerInterrupt(void)
 {
   /* toggle the blue led */
   GPIO0->output_val.bit.pin5 ^= 1;
-  
+
   /* reload the mtimer */
-  mtimer_ReloadTimer(MTIME_TIMEOUT_MS(500));
+  mtimer_ReloadTimer(MTIME_TIMEOUT_MS(MTIME_TIMEOUT_LED_PHASE));
 }
 
 
