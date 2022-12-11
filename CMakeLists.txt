@@ -9,12 +9,13 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_C_STANDARD 99)
 set(CMAKE_CXX_STANDARD 17)
 
-set(DEPLOY_DIR ${CMAKE_CURRENT_BINARY_DIR})
+set(DEPLOY_DIR "${CMAKE_CURRENT_BINARY_DIR}")
 set(EXECUTABLE_NAME "${CMAKE_PROJECT_NAME}")
 set(EXECUTABLE_FORMAT elf)
 set(EXECUTABLE "${EXECUTABLE_NAME}.${EXECUTABLE_FORMAT}")
-set(SRC_DIR ${CMAKE_SOURCE_DIR}/Code)
+set(SRC_DIR "${CMAKE_SOURCE_DIR}/Code")
 set(LD_SCRIPT "${SRC_DIR}/Memory_Map.ld")
+set(MAP_FILE "${DEPLOY_DIR}/${EXECUTABLE_NAME}.map")
 
 # Set default build type if not defined
 if(NOT CMAKE_BUILD_TYPE)
@@ -94,7 +95,7 @@ set(LD_FLAGS_LIST
   -Wl,-T ${LD_SCRIPT}
   -Wl,--print-memory-usage
   -Wl,--print-map
-  -Wl,-Map=${DEPLOY_DIR}/${PROJECT}.map
+  -Wl,-Map="${MAP_FILE}"
 )
 
 # Concatenate listed flags so that they can be parsed when assigned to CMAKE_<X>_FLAGS symbols
