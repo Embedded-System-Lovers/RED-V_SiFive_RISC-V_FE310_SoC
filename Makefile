@@ -1,4 +1,4 @@
-﻿# ******************************************************************************************
+# ******************************************************************************************
 #   Filename    : Makefile
 #
 #   Author      : Chalandi Amine
@@ -26,7 +26,7 @@ SRC_DIR    = Code
 # Toolchain
 ############################################################################################
 
-TOOLCHAIN = riscv64-unknown-elf
+TOOLCHAIN = /mnt/c/Users/User/Downloads/riscv64-unknown-elf-toolchain-10.2.0-2020.12.8-x86_64-linux-ubuntu14/bin/riscv64-unknown-elf
 AS        = $(TOOLCHAIN)-g++
 CC        = $(TOOLCHAIN)-g++
 CPP       = $(TOOLCHAIN)-g++
@@ -35,7 +35,7 @@ OBJDUMP   = $(TOOLCHAIN)-objdump
 OBJCOPY   = $(TOOLCHAIN)-objcopy
 READELF   = $(TOOLCHAIN)-readelf
 
-PYTHON = python
+PYTHON = python3
 
 ############################################################################################
 # Optimization Compiler flags
