@@ -36,7 +36,6 @@ OBJCOPY   = $(TOOLCHAIN)-objcopy
 READELF   = $(TOOLCHAIN)-readelf
 
 PYTHON = python
-PYTHON = python3
 
 ############################################################################################
 # Optimization Compiler flags
