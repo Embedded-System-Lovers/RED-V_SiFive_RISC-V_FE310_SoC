@@ -1,13 +1,6 @@
 #
 # Root CMakeLists.txt
 #
-# Use:
-#   mkdir Output && cd Output
-#   cmake -DCMAKE_TOOLCHAIN_FILE=../cmake/toolchain-unix.cmake .. && make
-#
-# Limitations:
-#   It only supports unix like platforms
-#
 cmake_minimum_required (VERSION 3.15)
 project(Blinky_RedV_FE310 ASM C CXX)
 

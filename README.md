@@ -35,9 +35,19 @@ interrupt handler.
 
 Build on `*nix*` is easy using an installed `gcc-riscv64-unknown-elf`
 
+Both Make and Cmake can be used to build the Application:
+
 ```sh
 cd RED-V_SiFive_RISC-V_FE310_SoC
+```
+### Make
+```
 bash Rebuild.sh
+```
+### CMake
+```sh
+mkdir Output && cd Output
+cmake -DCMAKE_TOOLCHAIN_FILE=../cmake/toolchain-unix.cmake .. && make
 ```
 
 The build results including ELF-file, HEX-mask, MAP-file
