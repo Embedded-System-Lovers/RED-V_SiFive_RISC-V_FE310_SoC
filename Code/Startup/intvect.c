@@ -16,10 +16,10 @@
 ******************************************************************************************************/
 
 //=====================================================================================================
-// Extern Functions
+// Includes
 //=====================================================================================================
-extern unsigned long __CSR_Read_mcause(void);
-extern void __CSR_ClearPendingBits(unsigned long mask);
+#include "riscv-csr.h"
+#include "Platform_Types.h"
 
 //=====================================================================================================
 // Functions prototype
@@ -92,12 +92,6 @@ void Isr_PWM2CMP1_IRQn                (void) __attribute__((weak, alias("Undefin
 void Isr_PWM2CMP2_IRQn                (void) __attribute__((weak, alias("UndefinedHandler")));
 void Isr_PWM2CMP3_IRQn                (void) __attribute__((weak, alias("UndefinedHandler")));
 void Isr_I2C0_IRQn                    (void) __attribute__((weak, alias("UndefinedHandler")));
-
-//=====================================================================================================
-// Types definition
-//=====================================================================================================
-typedef void (*InterruptHandler)(void);
-
 
 //=====================================================================================================
 // Platform-Level Interrupts vector table
@@ -218,8 +212,8 @@ static void UndefinedHandler(void)
 void DirectModeInterruptHandler(void)
 {
   /* get the exception cause number */
-  unsigned long mcause = __CSR_Read_mcause();
-  unsigned long idx    = (mcause & ((1UL<< 10u) - 1u)) + 12 * (mcause >> 31u);
+  uint32 mcause = csr_read_mcause();
+  uint32 idx    = (mcause & ((1UL<< 10u) - 1u)) + 12 * (mcause >> 31u);
 
   if(idx < 24u)
   {

@@ -28,6 +28,7 @@ typedef unsigned long long uint64;
 typedef signed long long sint64;
 
 typedef void (*pVoidFunc)(void);
+typedef void (*InterruptHandler)(void);
 
 typedef enum
 {

@@ -182,16 +182,18 @@ endif
 # Source Files
 ############################################################################################
 
-SRC_FILES := $(SRC_DIR)/boot.s            \
-             $(SRC_DIR)/core.s            \
-             $(SRC_DIR)/intvect.c         \
-             $(SRC_DIR)/main.c            \
-             $(SRC_DIR)/Startup.c
+SRC_FILES := $(SRC_DIR)/Mcal/mtimer.c     \
+             $(SRC_DIR)/Mcal/Mcu.c        \
+             $(SRC_DIR)/Startup/boot.s    \
+             $(SRC_DIR)/Startup/intvect.c \
+             $(SRC_DIR)/Startup/Startup.c \
+             $(SRC_DIR)/main.c
 
 ############################################################################################
 # Include Paths
 ############################################################################################
-INC_FILES := $(SRC_DIR)
+INC_FILES := $(SRC_DIR)          \
+             $(SRC_DIR)/Mcal
 
 ############################################################################################
 # Rules

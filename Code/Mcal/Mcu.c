@@ -1,5 +1,5 @@
 /******************************************************************************************
-  Filename    : main.c
+  Filename    : Mcu.c
   
   Core        : RV32IMAC
   
@@ -9,9 +9,9 @@
  
   Owner       : Chalandi Amine
   
-  Date        : 04.06.2021
+  Date        : 11.12.2022
   
-  Description : main application implementation
+  Description : Microcontroller routine implementation
   
 ******************************************************************************************/
 
@@ -19,13 +19,12 @@
 // Includes
 //=====================================================================================================
 #include "FE310.h"
-#include "mtimer.h"
+#include "Mcu.h"
 #include "riscv-csr.h"
 
 //=====================================================================================================
 // Functions prototype
 //=====================================================================================================
-void Isr_MachineTimerInterrupt(void);
 
 //=====================================================================================================
 // Macros
@@ -35,24 +34,6 @@ void Isr_MachineTimerInterrupt(void);
 // Globals
 //=====================================================================================================
 
-//-----------------------------------------------------------------------------------------
-/// \brief  
-///
-/// \param  
-///
-/// \return 
-//-----------------------------------------------------------------------------------------
-int main(void)
-{
-  /* start the mtimer */
-  mtimer_StartTimer(MTIME_TIMEOUT_MS(500));
-
-  /* endless loop*/
-  while(1);
-
-  return(0);
-}
-
 
 //-----------------------------------------------------------------------------------------
 /// \brief  
@@ -61,13 +42,15 @@ int main(void)
 ///
 /// \return 
 //-----------------------------------------------------------------------------------------
-void Isr_MachineTimerInterrupt(void)
+void FE310_HwInitialization(void)
 {
-  /* toggle the blue led */
-  GPIO0->output_val.bit.pin5 ^= 1;
-  
-  /* reload the mtimer */
-  mtimer_ReloadTimer(MTIME_TIMEOUT_MS(500));
+  GPIO0->output_en.bit.pin5 = 1;
+  GPIO0->output_val.bit.pin5 = 1;
+
+  /* Disable all PLIC interrupts */
+  PLIC->enable[0] = 0;
+  PLIC->enable[1] = 0;
+
+  /* turn on the global interrupt enable flag */
+  csr_write_mstatus(8);
 }
-
-
