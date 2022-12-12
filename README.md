@@ -2,6 +2,8 @@ RED-V_SiFive_RISC-V_FE310_SoC
 ==================
 Bare metal programming on the RED-V Thing Plus board (SiFive RISC-V FE310 SoC).
 
+[![Build Status](https://github.com/Embedded-System-Lovers/RED-V_SiFive_RISC-V_FE310_SoC/actions/workflows/RED-V_SiFive_RISC-V_FE310_SoC.yml/badge.svg)](https://github.com/Embedded-System-Lovers/RED-V_SiFive_RISC-V_FE310_SoC/actions)
+
 This repository implements an entirely manually-written, pure
 _bare_ _metal_ Blinky Project for the SiFive RISC-V FE310 SoC
 (on the RED-V Thing Plus board).
@@ -60,4 +62,6 @@ in the usual `*nix` way.
 
 ## Continuous Integration
 
-TODO
+CI runs on pushes and pull-requests with a simple
+build and result verification on `ubuntu-latest`
+using GutHub Actions.
