@@ -64,4 +64,4 @@ in the usual `*nix` way.
 
 CI runs on pushes and pull-requests with simple
 build(s) including result verification on `ubuntu-latest`
-using GutHub Actions.
+using GitHub Actions.
