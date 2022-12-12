@@ -62,6 +62,6 @@ in the usual `*nix` way.
 
 ## Continuous Integration
 
-CI runs on pushes and pull-requests with a simple
-build and result verification on `ubuntu-latest`
+CI runs on pushes and pull-requests with simple
+build(s) including result verification on `ubuntu-latest`
 using GutHub Actions.
