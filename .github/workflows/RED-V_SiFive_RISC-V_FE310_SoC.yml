@@ -38,7 +38,7 @@ jobs:
           tar -xvzf riscv64-unknown-elf-toolchain-10.2.0-2020.12.8-x86_64-linux-ubuntu14.tar.gz
       - name: target-riscv64-unknown-elf
         run: |
-          PATH=./riscv64-unknown-elf-toolchain-10.2.0-2020.12.8-x86_64-linux-ubuntu14/bin:$PATH
           mkdir -p Output && cd Output
+          PATH=../riscv64-unknown-elf-toolchain-10.2.0-2020.12.8-x86_64-linux-ubuntu14/bin:$PATH
           cmake -DCMAKE_TOOLCHAIN_FILE=../cmake/toolchain-unix.cmake .. && make
           ls -la ./Blinky_RedV_FE310.hex
