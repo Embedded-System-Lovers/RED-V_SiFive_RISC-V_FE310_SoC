@@ -20,4 +20,6 @@ jobs:
           tar -xvzf riscv64-unknown-elf-toolchain-10.2.0-2020.12.8-x86_64-linux-ubuntu14.tar.gz
       - name: target-riscv64-unknown-elf
         run: |
-          ls -la
+          PATH=./riscv64-unknown-elf-toolchain-10.2.0-2020.12.8-x86_64-linux-ubuntu14/bin:$PATH
+          bash ./Rebuild.sh
+          ls ./Output/Blinky_RedV_FE310.hex
