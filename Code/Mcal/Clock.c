@@ -1,5 +1,5 @@
 /******************************************************************************************
-  Filename    : Mcu.c
+  Filename    : Clock.c
   
   Core        : RV32IMAC
   
@@ -11,7 +11,7 @@
   
   Date        : 11.12.2022
   
-  Description : Microcontroller routine implementation
+  Description : Clock driver implementation
   
 ******************************************************************************************/
 
@@ -20,7 +20,6 @@
 //=====================================================================================================
 #include "FE310.h"
 #include "Clock.h"
-#include "Mcu.h"
 #include "riscv-csr.h"
 
 //=====================================================================================================
@@ -43,19 +42,32 @@
 ///
 /// \return 
 //-----------------------------------------------------------------------------------------
-void FE310_HwInitialization(void)
+void FE310_ClockInitialization(void)
 {
-  /* Configure the cpu and the peripheral clocks */
-  FE310_ClockInitialization();
+  /* wait for HFXOSC to be become ready */
+  while(!PRCI->hfxosccfg.bit.ready);
 
-  /* Set output high (and set value before switching to output). */
-  GPIO0->output_val.bit.pin5 = 1;
-  GPIO0->output_en.bit.pin5 = 1;
+  /* select pllref clock (HFXOSC) */
+  PRCI->pllcfg.bit.refsel = 1;
 
-  /* Disable all PLIC interrupts */
-  PLIC->enable[0] = 0;
-  PLIC->enable[1] = 0;
+  /* divide pllref (HFXOSC) by 2 ==> refr = 8 MHz */
+  PRCI->pllcfg.bit.pllr = 1;
 
-  /* turn on the global interrupt enable flag */
-  csr_write_mstatus(8);
+  /* multiply refr by 96 ==> vco = 768 MHz */
+  PRCI->pllcfg.bit.pllf = 47;
+
+  /* divide vco by 4 ==> pllout = 192 MHz */
+  PRCI->pllcfg.bit.pllq = 2;
+
+  /* bypass final pllout divider */
+  PRCI->plloutdiv.bit.divby1 = 1;
+
+  /* drive the final hfclk with the PLL output */
+  PRCI->pllcfg.bit.sel = 1;
+
+  /* disable pll bypass */
+  PRCI->pllcfg.bit.bypass = 0;
+
+  /* wait for pll to lock */
+  while(!PRCI->pllcfg.bit.lock);
 }

@@ -117,6 +117,7 @@ set(CMAKE_VERBOSE_MAKEFILE OFF) # Set it to ON to have verbose build output
 # Construct executable
 add_executable(${EXECUTABLE}
   ${SRC_DIR}/Mcal/mtimer.c
+  ${SRC_DIR}/Mcal/Clock.c
   ${SRC_DIR}/Mcal/Mcu.c
   ${SRC_DIR}/Startup/boot.s
   ${SRC_DIR}/Startup/intvect.c
