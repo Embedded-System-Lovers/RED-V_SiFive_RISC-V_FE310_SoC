@@ -18,6 +18,7 @@
 //=====================================================================================================
 // Includes
 //=====================================================================================================
+#include "FE310.h"
 #include "riscv-csr.h"
 #include "Platform_Types.h"
 
@@ -26,6 +27,7 @@
 //=====================================================================================================
 static void UndefinedHandler(void);
 void DirectModeInterruptHandler(void) __attribute__ ((interrupt ("machine")));
+void Isr_MachineExternalInterrupt(void);
 
 void Isr_InstructionAddressMisaligned (void) __attribute__((weak, alias("UndefinedHandler")));
 void Isr_InstructionAccessFault       (void) __attribute__((weak, alias("UndefinedHandler")));
@@ -39,7 +41,6 @@ void Isr_EnvironmentCallFromUmode     (void) __attribute__((weak, alias("Undefin
 void Isr_EnvironmentCallFromMmode     (void) __attribute__((weak, alias("UndefinedHandler")));
 void Isr_MachineSoftwareInterrupt     (void) __attribute__((weak, alias("UndefinedHandler")));
 void Isr_MachineTimerInterrupt        (void) __attribute__((weak, alias("UndefinedHandler")));
-void Isr_MachineExternalInterrupt     (void) __attribute__((weak, alias("UndefinedHandler")));
 void Isr_WATCHDOG_IRQn                (void) __attribute__((weak, alias("UndefinedHandler")));
 void Isr_RTC_IRQn                     (void) __attribute__((weak, alias("UndefinedHandler")));
 void Isr_UART0_IRQn                   (void) __attribute__((weak, alias("UndefinedHandler")));
@@ -212,8 +213,8 @@ static void UndefinedHandler(void)
 void DirectModeInterruptHandler(void)
 {
   /* get the exception cause number */
-  uint32 mcause = csr_read_mcause();
-  uint32 idx    = (mcause & ((1UL<< 10u) - 1u)) + 12 * (mcause >> 31u);
+  const uint32 mcause = csr_read_mcause();
+  const uint32 idx    = (mcause & ((1UL<< 10u) - 1u)) + 12 * (mcause >> 31u);
 
   if(idx < 24u)
   {
@@ -223,3 +224,24 @@ void DirectModeInterruptHandler(void)
 
 }
 
+//-----------------------------------------------------------------------------------------
+/// \brief  
+///
+/// \param  
+///
+/// \return 
+//-----------------------------------------------------------------------------------------
+void Isr_MachineExternalInterrupt(void)
+{
+  /* get the PLIC pending interrupt ID */
+  const uint32 IntId = PLIC->claim;
+
+  if(IntId < 52u)
+  {
+    /* call the appropriate interrupt service routine */
+    PLIVT[IntId]();
+  }
+
+  /* set the interrupt as completed */
+   PLIC->claim = IntId;
+}
