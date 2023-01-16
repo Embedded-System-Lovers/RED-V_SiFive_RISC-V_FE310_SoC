@@ -70,14 +70,6 @@ COPS  = $(OPT)                                        \
         -ffast-math                                   \
         -Wa,-adhln=$(OBJ_DIR)/$(basename $(@F)).lst   \
         -g3                                           \
-        -Wconversion                                  \
-        -Wsign-conversion                             \
-        -Wunused-parameter                            \
-        -Wuninitialized                               \
-        -Wmissing-declarations                        \
-        -Wshadow                                      \
-        -Wunreachable-code                            \
-        -Wmissing-include-dirs                        \
         -x c                                          \
         -std=c99                                      \
         -Wall                                         \
@@ -95,14 +87,6 @@ CPPOPS  = $(OPT)                                        \
           -ffast-math                                   \
           -Wa,-adhln=$(OBJ_DIR)/$(basename $(@F)).lst   \
           -g3                                           \
-          -Wconversion                                  \
-          -Wsign-conversion                             \
-          -Wunused-parameter                            \
-          -Wuninitialized                               \
-          -Wmissing-declarations                        \
-          -Wshadow                                      \
-          -Wunreachable-code                            \
-          -Wmissing-include-dirs                        \
           -Wall                                         \
           -Wextra                                       \
           -fomit-frame-pointer                          \
@@ -130,14 +114,6 @@ ASOPS = $(OPT)                                        \
         -ffast-math                                   \
         -Wa,-adhln=$(OBJ_DIR)/$(basename $(@F)).lst   \
         -g3                                           \
-        -Wconversion                                  \
-        -Wsign-conversion                             \
-        -Wunused-parameter                            \
-        -Wuninitialized                               \
-        -Wmissing-declarations                        \
-        -Wshadow                                      \
-        -Wunreachable-code                            \
-        -Wmissing-include-dirs                        \
         -Wall                                         \
         -Wextra                                       \
         -fomit-frame-pointer                          \
@@ -181,6 +157,17 @@ endif
 ############################################################################################
 # Source Files
 ############################################################################################
+OSEK_SRC_FILES := $(SRC_DIR)/OSEK/HwPlatform/RISC-V/OsSwClz.s          \
+                  $(SRC_DIR)/OSEK/HwPlatform/RISC-V/OsAsm.s            \
+                  $(SRC_DIR)/OSEK/HwPlatform/RISC-V/OsHwSchedPrio.s    \
+                  $(SRC_DIR)/OSEK/HwPlatform/RISC-V/OsHwPltfm.c        \
+                  $(SRC_DIR)/OSEK/OsAlarm.c                            \
+                  $(SRC_DIR)/OSEK/OsCore.c                             \
+                  $(SRC_DIR)/OSEK/OsEvt.c                              \
+                  $(SRC_DIR)/OSEK/OsSched.c                            \
+                  $(SRC_DIR)/OSEK/OsTask.c                             \
+                  $(SRC_DIR)/OSEK/OsTcb.c
+
 
 SRC_FILES := $(SRC_DIR)/Mcal/mtimer.c     \
              $(SRC_DIR)/Mcal/Clock.c      \
@@ -188,12 +175,18 @@ SRC_FILES := $(SRC_DIR)/Mcal/mtimer.c     \
              $(SRC_DIR)/Startup/boot.s    \
              $(SRC_DIR)/Startup/intvect.c \
              $(SRC_DIR)/Startup/Startup.c \
-             $(SRC_DIR)/main.c
+             $(SRC_DIR)/main.c            \
+             $(SRC_DIR)/tasks.c           \
+             $(OSEK_SRC_FILES)
 
 ############################################################################################
 # Include Paths
 ############################################################################################
+OSEK_INC_FILES := $(SRC_DIR)/OSEK/HwPlatform/RISC-V     \
+                  $(SRC_DIR)/OSEK
+
 INC_FILES := $(SRC_DIR)          \
+             $(OSEK_INC_FILES)   \
              $(SRC_DIR)/Mcal
 
 ############################################################################################
@@ -215,12 +208,7 @@ all : $(OUTPUT_DIR)/$(PRJ_NAME).elf
 
 .PHONY : clean
 clean :
-	@-rm -rf $(OUTPUT_DIR) *.o    2>/dev/null || true
-	@-rm -rf $(OUTPUT_DIR) *.hex  2>/dev/null || true
-	@-rm -rf $(OUTPUT_DIR) *.elf  2>/dev/null || true
-	@-rm -rf $(OUTPUT_DIR) *.list 2>/dev/null || true
-	@-rm -rf $(OUTPUT_DIR) *.map  2>/dev/null || true
-	@-rm -rf $(OUTPUT_DIR) *.txt  2>/dev/null || true
+	@-rm -rf $(OUTPUT_DIR)  2>/dev/null || true
 	@-mkdir -p $(subst \,/,$(OBJ_DIR))
 
 
@@ -250,10 +238,16 @@ $(OBJ_DIR)/%.o : %.cpp
 
 
 $(OUTPUT_DIR)/$(PRJ_NAME).elf : $(FILES_O) $(LD_SCRIPT)
+	@-echo +++ link : $(subst \,/,$@)
 	@$(LD) $(LOPS) $(FILES_O) -o $(OUTPUT_DIR)/$(PRJ_NAME).elf
+	@-echo +++ generate : $(OUTPUT_DIR)/$(PRJ_NAME).list.text
 	@$(OBJDUMP) -d --visualize-jumps --wide $(OUTPUT_DIR)/$(PRJ_NAME).elf > $(OUTPUT_DIR)/$(PRJ_NAME).list.text
+	@-echo +++ generate : $(OUTPUT_DIR)/$(PRJ_NAME).list.all
 	@$(OBJDUMP) -D --visualize-jumps --wide $(OUTPUT_DIR)/$(PRJ_NAME).elf > $(OUTPUT_DIR)/$(PRJ_NAME).list.all
+	@-echo +++ generate : $(OUTPUT_DIR)/$(PRJ_NAME).list.text.pure
 	@$(OBJDUMP) -d --visualize-jumps --wide --disassembler-options=numeric,no-aliases $(OUTPUT_DIR)/$(PRJ_NAME).elf > $(OUTPUT_DIR)/$(PRJ_NAME).list.text.pure
+	@-echo +++ generate : $(OUTPUT_DIR)/$(PRJ_NAME).hex
 	@$(OBJCOPY) $(OUTPUT_DIR)/$(PRJ_NAME).elf -O ihex $(OUTPUT_DIR)/$(PRJ_NAME).hex
+	@-echo +++ generate : $(OUTPUT_DIR)/$(PRJ_NAME).readelf
 	@$(READELF) --wide -S -s $(OUTPUT_DIR)/$(PRJ_NAME).elf > $(OUTPUT_DIR)/$(PRJ_NAME).readelf
 

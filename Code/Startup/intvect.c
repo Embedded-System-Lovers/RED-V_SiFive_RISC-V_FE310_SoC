@@ -18,6 +18,7 @@
 //=====================================================================================================
 // Includes
 //=====================================================================================================
+#include "FE310.h"
 #include "riscv-csr.h"
 #include "Platform_Types.h"
 
@@ -26,6 +27,7 @@
 //=====================================================================================================
 static void UndefinedHandler(void);
 void DirectModeInterruptHandler(void) __attribute__ ((interrupt ("machine")));
+void Isr_MachineExternalInterrupt(void);
 
 void Isr_InstructionAddressMisaligned (void) __attribute__((weak, alias("UndefinedHandler")));
 void Isr_InstructionAccessFault       (void) __attribute__((weak, alias("UndefinedHandler")));
@@ -39,7 +41,6 @@ void Isr_EnvironmentCallFromUmode     (void) __attribute__((weak, alias("Undefin
 void Isr_EnvironmentCallFromMmode     (void) __attribute__((weak, alias("UndefinedHandler")));
 void Isr_MachineSoftwareInterrupt     (void) __attribute__((weak, alias("UndefinedHandler")));
 void Isr_MachineTimerInterrupt        (void) __attribute__((weak, alias("UndefinedHandler")));
-void Isr_MachineExternalInterrupt     (void) __attribute__((weak, alias("UndefinedHandler")));
 void Isr_WATCHDOG_IRQn                (void) __attribute__((weak, alias("UndefinedHandler")));
 void Isr_RTC_IRQn                     (void) __attribute__((weak, alias("UndefinedHandler")));
 void Isr_UART0_IRQn                   (void) __attribute__((weak, alias("UndefinedHandler")));
@@ -98,6 +99,7 @@ void Isr_I2C0_IRQn                    (void) __attribute__((weak, alias("Undefin
 //=====================================================================================================
 const InterruptHandler __attribute__((aligned(4))) PLIVT[] =
 {
+    (InterruptHandler)&UndefinedHandler,    /* IRQ 00  Reserved  */
     (InterruptHandler)&Isr_WATCHDOG_IRQn,   /* IRQ 01  WATCHDOG  */
     (InterruptHandler)&Isr_RTC_IRQn,        /* IRQ 02  RTC       */
     (InterruptHandler)&Isr_UART0_IRQn,      /* IRQ 03  UART0     */
@@ -223,3 +225,24 @@ void DirectModeInterruptHandler(void)
 
 }
 
+//-----------------------------------------------------------------------------------------
+/// \brief  
+///
+/// \param  
+///
+/// \return 
+//-----------------------------------------------------------------------------------------
+void Isr_MachineExternalInterrupt(void)
+{
+  /* get the PLIC pending interrupt ID */
+  const uint32 IntId = PLIC->claim;
+
+  if(IntId < 52u)
+  {
+    /* call the appropriate interrupt service routine */
+    PLIVT[IntId]();
+  }
+
+  /* set the interrupt as completed */
+   PLIC->claim = IntId;
+}

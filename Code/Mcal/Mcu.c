@@ -52,10 +52,4 @@ void FE310_HwInitialization(void)
   GPIO0->output_val.bit.pin5 = 1;
   GPIO0->output_en.bit.pin5 = 1;
 
-  /* Disable all PLIC interrupts */
-  PLIC->enable[0] = 0;
-  PLIC->enable[1] = 0;
-
-  /* turn on the global interrupt enable flag */
-  csr_write_mstatus(8);
 }

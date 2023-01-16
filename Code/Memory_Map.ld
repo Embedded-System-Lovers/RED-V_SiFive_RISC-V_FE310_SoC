@@ -69,6 +69,14 @@ SECTIONS
     . = ALIGN(4);
   } > FLASH
 
+  /* vectored IVT */
+  .vivt : ALIGN(64)
+  {
+    PROVIDE(__VIVT_BASE_ADDRESS = .);
+    *(*vivt*)
+    . = ALIGN(4);
+  } > FLASH
+
   /* Read-only data (.rodata) */
   .rodata : ALIGN(4)
   {
