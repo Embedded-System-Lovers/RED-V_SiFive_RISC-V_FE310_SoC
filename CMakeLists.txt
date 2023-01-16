@@ -123,12 +123,25 @@ add_executable(${EXECUTABLE}
   ${SRC_DIR}/Startup/intvect.c
   ${SRC_DIR}/Startup/Startup.c
   ${SRC_DIR}/main.c
+  ${SRC_DIR}/tasks.c
+  ${SRC_DIR}/OSEK/HwPlatform/RISC-V/OsSwClz.s
+  ${SRC_DIR}/OSEK/HwPlatform/RISC-V/OsAsm.s
+  ${SRC_DIR}/OSEK/HwPlatform/RISC-V/OsHwSchedPrio.s
+  ${SRC_DIR}/OSEK/HwPlatform/RISC-V/OsHwPltfm.c
+  ${SRC_DIR}/OSEK/OsAlarm.c
+  ${SRC_DIR}/OSEK/OsCore.c
+  ${SRC_DIR}/OSEK/OsEvt.c
+  ${SRC_DIR}/OSEK/OsSched.c
+  ${SRC_DIR}/OSEK/OsTask.c
+  ${SRC_DIR}/OSEK/OsTcb.c
   )
 
 target_include_directories(${EXECUTABLE}
   PRIVATE
     ${SRC_DIR}
     ${SRC_DIR}/Mcal
+    ${SRC_DIR}/OSEK/HwPlatform/RISC-V
+    ${SRC_DIR}/OSEK
   )
 
 target_link_libraries(${EXECUTABLE}

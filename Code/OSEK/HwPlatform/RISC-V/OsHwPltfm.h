@@ -58,6 +58,8 @@ void osHwTimerStart(void);
 void osHwTimerReload(void);
 void osRestoreSavedIntState(void);
 void osSaveAndDisableIntState(void);
-
+void OsRunSysTickIsr(void);
+void OsCatchAllCpuExceptions(void);
+void OsIsr_SysTickTimerFunc(void);
 
 #endif
