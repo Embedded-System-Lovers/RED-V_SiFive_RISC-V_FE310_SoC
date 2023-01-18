@@ -15,7 +15,9 @@
     #define _OS_GEN_MAC_H_
 #endif
 
-#include"OsTypes.h"
+#ifndef OS_GEN_MAC_FROM_ASM_FILE
+    #include"OsTypes.h"
+#endif
 
 #ifdef OS_MULTICORE_BEGIN
 #undef OS_MULTICORE_BEGIN
@@ -350,6 +352,41 @@
 #define OS_MULTICORE_END
 #define OS_CONFIG_END
 
+#elif defined(OS_GEN_VECTORED_IVT)
+
+#define OS_MULTICORE_BEGIN
+#define OS_CONFIG_BEGIN
+
+#define OS_TASK_BEGIN
+#define OS_TASK_DEF(Name,Prio,StackSize,NbOfActiv,AutoStart,TaskType,SchedType)  
+#define OS_TASK_END
+
+#define OS_EVENT_BEGIN
+#define OS_EVENT_DEF(Event, Mask)
+#define OS_EVENT_END
+
+#define OS_ALARM_BEGIN
+#define OS_ALARM_DEF(Name,Action,Event,task,Callback)
+#define OS_ALARM_AUTO_DEF(Name,Increment,Cycle,Action,Event,task,Callback)
+#define OS_ALARM_END
+
+#define OS_RESOURCE_BEGIN
+#define OS_RESOURCE_DEF(Name,CeilingPrio,AuthorizedTasks...)
+#define OS_RESOURCE_END
+
+#define OS_INTERRUPT_BEGIN                                                       osInternalVectorTable:
+
+#define OS_INTERRUPT_CAT1_DEF(IsrFunc,Prio,Type)                                 j IsrFunc
+#define OS_INTERRUPT_CAT2_DEF(IsrFunc,Prio,Type)                                 j OsIsr_##IsrFunc##Func
+#define OS_INTERRUPT_END                                                         .size osInternalVectorTable, .-osInternalVectorTable
+
+#define OS_FE_INTERRUPT_BEGIN
+#define OS_FE_INTERRUPT_CAT2_DEF(FeIsrFunc)
+#define OS_FE_INTERRUPT_END  
+
+#define OS_MULTICORE_END
+#define OS_CONFIG_END
+
 #elif defined(OS_GEN_NOT)
 
 #define OS_MULTICORE_BEGIN
@@ -417,3 +454,6 @@
 #undef OS_GEN_NOT
 #endif
 
+#ifdef OS_GEN_VECTORED_IVT
+#undef OS_GEN_VECTORED_IVT
+#endif

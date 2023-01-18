@@ -40,8 +40,9 @@ volatile uint32 OsHwPltfmSavedIntState = 0;
 //------------------------------------------------------------------------------------------------------------------
 boolean OsIsInterruptContext(void)
 {
-  #warning "NOT IMPLEMENTED YET !!!! --> TODO"
-  return(0);
+  /* SiFive CLINT does not support nested interrupt in the HW
+     OS category 1 interrupt is not supported in this architecture */
+  return((OCB_Cfg.OsInterruptNestingDeepth > 0) ? TRUE : FALSE);
 }
 
 //-----------------------------------------------------------------------------
