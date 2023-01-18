@@ -5,9 +5,9 @@
 //
 // Owner       : Chalandi Amine
 // 
-// Date        : 27.12.2017
+// Date        : 18.01.2023
 // 
-// Description : Hardware Platform definition for ARM Cortex-M4
+// Description : Hardware platform header file for SiFive RISC-V FE310 SoC
 // 
 // *****************************************************************************
 

@@ -1,13 +1,13 @@
 // *****************************************************************************
-// Filename    : OsHwPltDep.c
+// Filename    : OsHwPltfm.c
 // 
 // Author      : Chalandi Amine
 //
 // Owner       : Chalandi Amine
 // 
-// Date        : 27.12.2017
+// Date        : 18.01.2023
 // 
-// Description : Hardware Platform definition for ARM Cortex-M4
+// Description : Hardware platform implementation for SiFive RISC-V FE310 SoC
 // 
 // *****************************************************************************
 
@@ -127,10 +127,7 @@ void osInitInterrupts(void)
   csr_set_bits_mie(MIE_MSI_BIT_MASK | MIE_MTI_BIT_MASK | MIE_MEI_BIT_MASK);
 
 }
-ISR(_RTC_)
-{
-  __asm("NOP");
-}
+
 //------------------------------------------------------------------------------------------------------------------
 /// \brief  
 ///

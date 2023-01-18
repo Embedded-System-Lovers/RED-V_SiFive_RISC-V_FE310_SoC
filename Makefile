@@ -161,6 +161,7 @@ OSEK_SRC_FILES := $(SRC_DIR)/OSEK/HwPlatform/RISC-V/OsSwClz.s          \
                   $(SRC_DIR)/OSEK/HwPlatform/RISC-V/OsAsm.s            \
                   $(SRC_DIR)/OSEK/HwPlatform/RISC-V/OsHwSchedPrio.s    \
                   $(SRC_DIR)/OSEK/HwPlatform/RISC-V/OsHwPltfm.c        \
+                  $(SRC_DIR)/OSEK/HwPlatform/RISC-V/OsDummy.asm        \
                   $(SRC_DIR)/OSEK/OsAlarm.c                            \
                   $(SRC_DIR)/OSEK/OsCore.c                             \
                   $(SRC_DIR)/OSEK/OsEvt.c                              \
@@ -223,10 +224,22 @@ $(OBJ_DIR)/%.o : %.s
 	@-echo +++ compile: $(subst \,/,$<) to $(subst \,/,$@)
 	@$(AS) $(ASOPS) $< -o $(OBJ_DIR)/$(basename $(@F)).o 2> $(OBJ_DIR)/$(basename $(@F)).err >$(OBJ_DIR)/$(basename $(@F)).lst
 	@-$(PYTHON) CompilerErrorFormater.py $(OBJ_DIR)/$(basename $(@F)).err -COLOR
+
+$(OBJ_DIR)/%.o : %.asm
+	@-echo +++ compile: $(subst \,/,$<) to $(subst \,/,$@)
+	@$(CC) -E -P $(addprefix -I, $(INC_FILES)) -x c $< > $(OBJ_DIR)/$(basename $(@F)).asm.pre
+	@$(AS) $(ASOPS) $(OBJ_DIR)/$(basename $(@F)).asm.pre -o $(OBJ_DIR)/$(basename $(@F)).o 2> $(OBJ_DIR)/$(basename $(@F)).err >$(OBJ_DIR)/$(basename $(@F)).lst
+	@-$(PYTHON) CompilerErrorFormater.py $(OBJ_DIR)/$(basename $(@F)).err -COLOR
 else
 $(OBJ_DIR)/%.o : %.s
 	@-echo +++ compile: $(subst \,/,$<) to $(subst \,/,$@)
 	@-$(CC) $(ASOPS) $(addprefix -I, $(INC_FILES)) -c $< -o $(OBJ_DIR)/$(basename $(@F)).o 2> $(OBJ_DIR)/$(basename $(@F)).err
+	@-$(PYTHON) CompilerErrorFormater.py $(OBJ_DIR)/$(basename $(@F)).err -COLOR
+
+$(OBJ_DIR)/%.o : %.asm
+	@-echo +++ compile: $(subst \,/,$<) to $(subst \,/,$@)
+	@$(CC) -E -P $(addprefix -I, $(INC_FILES)) -x c $< > $(OBJ_DIR)/$(basename $(@F)).asm.pre
+	@-$(CC) $(ASOPS) $(addprefix -I, $(INC_FILES)) -c $(OBJ_DIR)/$(basename $(@F)).asm.pre -o $(OBJ_DIR)/$(basename $(@F)).o 2> $(OBJ_DIR)/$(basename $(@F)).err
 	@-$(PYTHON) CompilerErrorFormater.py $(OBJ_DIR)/$(basename $(@F)).err -COLOR
 endif
 
