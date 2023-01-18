@@ -158,38 +158,6 @@ uint32 osGetPMR(void)
 }
 
 //------------------------------------------------------------------------------------------------------------------
-/// \brief  
-///
-/// \descr  
-///
-/// \param  void
-///
-/// \return void
-//------------------------------------------------------------------------------------------------------------------
-//void osMaskNestedIntPrio(uint32 PrioLevel)
-//{
-//  (void)PrioLevel;
-// /* mask the category2 under the current nested priority */
-//  #warning "NOT IMPLEMENTED YET !!!! --> TODO"
-//}
-
-//------------------------------------------------------------------------------------------------------------------
-/// \brief  
-///
-/// \descr  
-///
-/// \param  void
-///
-/// \return void
-//------------------------------------------------------------------------------------------------------------------
-//void osMaskNonNestedIntPrio(uint32 PrioLevel)
-//{
-//  (void)PrioLevel;
-//  /* mask the category2 non nested interrupts */
-//  #warning "NOT IMPLEMENTED YET !!!! --> TODO"
-//}
-
-//------------------------------------------------------------------------------------------------------------------
 /// \brief  OsRunCat2Isr
 ///
 /// \descr  This function is the entry point of all category 2 interrupts (PLIC).
