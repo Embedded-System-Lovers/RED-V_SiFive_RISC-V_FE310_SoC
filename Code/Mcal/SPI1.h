@@ -1,5 +1,5 @@
 /******************************************************************************************
-  Filename    : Clock.h
+  Filename    : SPI1.h
   
   Core        : RV32IMAC
   
@@ -9,21 +9,21 @@
  
   Owner       : Chalandi Amine
   
-  Date        : 11.12.2022
+  Date        : 12.06.2023
   
-  Description : Clock driver header file
+  Description : SPI1 driver header file
   
 ******************************************************************************************/
 
-#ifndef __CLOCK_H__
-#define __CLOCK_H__
+#ifndef __SPI1_H__
+#define __SPI1_H__
 
 //=====================================================================================================
 // Functions prototype
 //=====================================================================================================
-void FE310_ClockInitialization(void);
+void FE310_SPI1_Init(void);
+boolean FE310_SPI1_Transfer(uint8* txdata, uint8* rxdata, uint8 size);
 
-
-#endif /* __CLOCK_H__ */
+#endif /* __SPI1_H__ */
 
 

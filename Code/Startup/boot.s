@@ -58,7 +58,7 @@ _start:
   
   \return 
 ********************************************************************************************/
-.section .text.vivt
+.section .vivt, "ax", @progbits
 .type _VectoredInterruptVectorTable, @function
 .align 4
 .globl Isr_MachineSoftwareInterrupt

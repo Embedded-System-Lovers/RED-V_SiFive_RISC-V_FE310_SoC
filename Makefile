@@ -173,6 +173,7 @@ OSEK_SRC_FILES := $(SRC_DIR)/OSEK/HwPlatform/RISC-V/OsSwClz.s          \
 SRC_FILES := $(SRC_DIR)/Mcal/mtimer.c     \
              $(SRC_DIR)/Mcal/Clock.c      \
              $(SRC_DIR)/Mcal/Mcu.c        \
+             $(SRC_DIR)/Mcal/SPI1.c       \
              $(SRC_DIR)/Startup/boot.s    \
              $(SRC_DIR)/Startup/intvect.c \
              $(SRC_DIR)/Startup/Startup.c \
