@@ -11,14 +11,17 @@ jobs:
       run:
         shell: bash
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: '0'
       - name: update-tools
         run: |
-          sudo apt install gcc-riscv64-unknown-elf
+          wget --no-check-certificate https://buildbot.embecosm.com/job/riscv32-gcc-ubuntu2204-release/6/artifact/riscv32-embecosm-ubuntu2204-gcc13.1.0.tar.gz
+          tar -xzf riscv32-embecosm-ubuntu2204-gcc13.1.0.tar.gz
+        working-directory: ./
       - name: target-riscv64-unknown-elf
         run: |
+          PATH=../riscv32-embecosm-ubuntu2204-gcc13.1.0/bin:$PATH
           bash ./Rebuild.sh
           ls -la ./Output/Blinky_RedV_FE310.hex
   target-gcc-riscv64-unknown-elf-cmake:
@@ -27,14 +30,17 @@ jobs:
       run:
         shell: bash
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: '0'
       - name: update-tools
         run: |
-          sudo apt install gcc-riscv64-unknown-elf
+          wget --no-check-certificate https://buildbot.embecosm.com/job/riscv32-gcc-ubuntu2204-release/6/artifact/riscv32-embecosm-ubuntu2204-gcc13.1.0.tar.gz
+          tar -xzf riscv32-embecosm-ubuntu2204-gcc13.1.0.tar.gz
+        working-directory: ./
       - name: target-riscv64-unknown-elf
         run: |
+          PATH=../riscv32-embecosm-ubuntu2204-gcc13.1.0/bin:$PATH
           mkdir -p Output && cd Output
           cmake -DCMAKE_TOOLCHAIN_FILE=../cmake/toolchain-unix.cmake .. && make
           ls -la ./Blinky_RedV_FE310.hex

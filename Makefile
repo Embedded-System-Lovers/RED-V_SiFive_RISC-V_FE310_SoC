@@ -59,7 +59,7 @@ VERBOSE_GCC = -frecord-gcc-switches -fverbose-asm
 # Target's Compiler flags
 ############################################################################################
 
-ARCH = -mcpu=sifive-e31 -mabi=ilp32 -msmall-data-limit=0 -falign-functions=4
+ARCH = -mcpu=sifive-e31 -mabi=ilp32 -march=rv32imac -msmall-data-limit=0 -falign-functions=4
 
 ############################################################################################
 # C Compiler flags
