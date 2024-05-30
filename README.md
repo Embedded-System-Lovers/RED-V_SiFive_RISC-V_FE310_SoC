@@ -40,7 +40,7 @@ interrupt handler.
 
 ## Building the Application
 
-Build on `*nix*` is easy using an installed `gcc-riscv64-unknown-elf`
+Build on `*nix*` is easy using `gcc-riscv32-unknown-elf`
 
 Both Make and Cmake can be used to build the Application:
 
@@ -60,8 +60,8 @@ cmake -DCMAKE_TOOLCHAIN_FILE=../cmake/toolchain-unix.cmake .. && make
 The build results including ELF-file, HEX-mask, MAP-file
 and assembly list file are created in the `Output`directory.
 
-If `gcc-riscv64-unknown-elf` is not installed, it can easily
-be obtained [here](https://github.com/sifive/freedom-tools/releases).
+If `gcc-riscv32-unknown-elf` is not installed, it can easily
+be obtained from [embecosm](https://www.embecosm.com/resources/tool-chain-downloads/#riscv-stable).
 Add the path of the RISC-V GCC tools' bin folder to `$PATH`
 in the usual `*nix` way.
 
@@ -73,7 +73,7 @@ using GitHub Actions.
 
 ## Licensing
 
-The project code is licenses under BSL with the exception of
+The project code is licensed under BSL with the exception of
 the [register definition file](https://github.com/Embedded-System-Lovers/RED-V_SiFive_RISC-V_FE310_SoC/blob/master/Code/Mcal/riscv-csr.h)
 originally from [five-embedded](https://five-embeddev.com) which
-is licences under the Unlicense.
+is licenced under the Unlicense.
