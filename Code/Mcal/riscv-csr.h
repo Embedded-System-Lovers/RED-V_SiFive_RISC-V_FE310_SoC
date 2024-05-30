@@ -9,6 +9,14 @@
 #ifndef RISCV_CSR_H
 #define RISCV_CSR_H
 
+#if defined(__GNUC__)
+#if defined(__cplusplus)
+asm(".option arch, +zicsr");
+#else
+__asm(".option arch, +zicsr");
+#endif
+#endif
+
 #include <stdint.h>
 
 #if __riscv_xlen==32
@@ -21,10 +29,6 @@ typedef uint32_t uint_csr32_t;
 typedef uint64_t uint_csr64_t;
 #else
 #error "Unknown XLEN"
-#endif
-
-#if ((defined(__GNUC__)  && (__GNUC__ > 10)) && defined(__riscv))
-asm(".option arch, +zicsr");
 #endif
 
 /*******************************************
