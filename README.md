@@ -40,6 +40,10 @@ to provide a rudimentary, visible blinky LED show.
 The timebase for blinky is based on the `mtimer`
 interrupt handler.
 
+Blinky running on the target is shown in the image below.
+
+![](./images/red_five.jpg)
+
 ## Building the Application
 
 Build on `*nix*` is easy using `gcc-riscv32-unknown-elf`
@@ -50,8 +54,8 @@ Both Make and Cmake can be used to build the Application:
 cd RED-V_SiFive_RISC-V_FE310_SoC
 ```
 ### Make
-```
-bash Rebuild.sh
+```sh
+./Rebuild.sh
 ```
 ### CMake
 ```sh
