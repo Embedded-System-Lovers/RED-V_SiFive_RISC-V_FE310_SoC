@@ -80,6 +80,6 @@ and `macos-latest` using GitHub Actions.
 ## Licensing
 
 The project code is licensed under BSL with the exception of
-the [register definition file](https://github.com/Embedded-System-Lovers/RED-V_SiFive_RISC-V_FE310_SoC/blob/master/Code/Mcal/riscv-csr.h)
-originally from [five-embedded](https://five-embeddev.com) which
-is licenced under the Unlicense.
+the system-register file [`riscv-csr.h`](https://github.com/Embedded-System-Lovers/RED-V_SiFive_RISC-V_FE310_SoC/blob/master/Code/Mcal/riscv-csr.h)
+originally from [five-embedded](https://five-embeddev.com),
+which is licenced under the Unlicense.
