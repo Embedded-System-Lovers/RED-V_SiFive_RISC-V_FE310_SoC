@@ -5,7 +5,7 @@ Bare metal programming on the RED-V Thing Plus board (SiFive RISC-V FE310 SoC).
 <p align="center">
     <a href="https://github.com/Embedded-System-Lovers/RED-V_SiFive_RISC-V_FE310_SoC/actions">
         <img src="https://github.com/Embedded-System-Lovers/RED-V_SiFive_RISC-V_FE310_SoC/actions/workflows/RED-V_SiFive_RISC-V_FE310_SoC.yml/badge.svg" alt="Build Status"></a>
-    <a href="https://github.com/Embedded-System-Lovers/teensy-4_nxp_iMXRT1062/blob/master/LICENSE_1_0.txt">
+    <a href="https://github.com/Embedded-System-Lovers/RED-V_SiFive_RISC-V_FE310_SoC/blob/master/LICENSE_1_0.txt">
         <img src="https://img.shields.io/badge/license-BSL%201.0-blue.svg" alt="Boost Software License 1.0"></a>
 </p>
 
@@ -40,7 +40,7 @@ interrupt handler.
 
 ## Building the Application
 
-Build on `*nix*` is easy using an installed `gcc-riscv64-unknown-elf`
+Build on `*nix*` is easy using `gcc-riscv32-unknown-elf`
 
 Both Make and Cmake can be used to build the Application:
 
@@ -60,8 +60,8 @@ cmake -DCMAKE_TOOLCHAIN_FILE=../cmake/toolchain-unix.cmake .. && make
 The build results including ELF-file, HEX-mask, MAP-file
 and assembly list file are created in the `Output`directory.
 
-If `gcc-riscv64-unknown-elf` is not installed, it can easily
-be obtained [here](https://github.com/sifive/freedom-tools/releases).
+If `gcc-riscv32-unknown-elf` is not installed, it can easily
+be obtained from [embecosm](https://www.embecosm.com/resources/tool-chain-downloads/#riscv-stable).
 Add the path of the RISC-V GCC tools' bin folder to `$PATH`
 in the usual `*nix` way.
 
@@ -70,3 +70,10 @@ in the usual `*nix` way.
 CI runs on pushes and pull-requests with simple
 build(s) including result verification on `ubuntu-latest`
 using GitHub Actions.
+
+## Licensing
+
+The project code is licensed under BSL with the exception of
+the [register definition file](https://github.com/Embedded-System-Lovers/RED-V_SiFive_RISC-V_FE310_SoC/blob/master/Code/Mcal/riscv-csr.h)
+originally from [five-embedded](https://five-embeddev.com) which
+is licenced under the Unlicense.
