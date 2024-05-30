@@ -6,7 +6,7 @@ on:
   pull_request:
 jobs:
   target-gcc-riscv64-unknown-elf:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     defaults:
       run:
         shell: bash
@@ -27,7 +27,7 @@ jobs:
           bash ./Rebuild.sh
           ls -la ./Output/Blinky_RedV_FE310.hex
   target-gcc-riscv64-unknown-elf-cmake:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     defaults:
       run:
         shell: bash

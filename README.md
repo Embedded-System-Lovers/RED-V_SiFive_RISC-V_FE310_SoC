@@ -19,11 +19,13 @@ Features include:
   - blinky LED show with adjustable frequency,
   - implementation in C99 with absolute minimal use of assembly.
 
-A clear and easy-to-understand build system based on GNUmake
-completes this fun and educational project.
+Clear and easy-to-understand build systems based on either
+GNUmake or CMake complete this fun and educational project.
 
 This repository provides keen insight on starting up
-a _bare_ _metal_ SiFive RISC-V controller.
+a _bare_ _metal_ SiFive RISC-V controller. It emphasizes
+simplicity and independence from monolithic toolchains
+through its lightweight, self-written implementation.
 
 ## Details on the Application
 
