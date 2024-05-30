@@ -26,7 +26,7 @@ SRC_DIR    = Code
 # Toolchain
 ############################################################################################
 
-TOOLCHAIN = riscv64-unknown-elf
+TOOLCHAIN = riscv32-unknown-elf
 AS        = $(TOOLCHAIN)-g++
 CC        = $(TOOLCHAIN)-g++
 CPP       = $(TOOLCHAIN)-g++
