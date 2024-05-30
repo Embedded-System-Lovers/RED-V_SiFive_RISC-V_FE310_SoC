@@ -1,7 +1,7 @@
 set(CMAKE_SYSTEM_NAME             Generic)
 set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
 
-set(TOOLCHAIN          riscv64-unknown-elf)
+set(TOOLCHAIN          riscv32-unknown-elf)
 set(AR                 ${TOOLCHAIN}-ar)
 set(AS                 ${TOOLCHAIN}-as)
 set(CC                 ${TOOLCHAIN}-gcc)

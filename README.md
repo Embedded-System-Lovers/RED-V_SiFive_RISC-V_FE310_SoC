@@ -2,7 +2,12 @@ RED-V_SiFive_RISC-V_FE310_SoC
 ==================
 Bare metal programming on the RED-V Thing Plus board (SiFive RISC-V FE310 SoC).
 
-[![Build Status](https://github.com/Embedded-System-Lovers/RED-V_SiFive_RISC-V_FE310_SoC/actions/workflows/RED-V_SiFive_RISC-V_FE310_SoC.yml/badge.svg)](https://github.com/Embedded-System-Lovers/RED-V_SiFive_RISC-V_FE310_SoC/actions)
+<p align="center">
+    <a href="https://github.com/Embedded-System-Lovers/RED-V_SiFive_RISC-V_FE310_SoC/actions">
+        <img src="https://github.com/Embedded-System-Lovers/RED-V_SiFive_RISC-V_FE310_SoC/actions/workflows/RED-V_SiFive_RISC-V_FE310_SoC.yml/badge.svg" alt="Build Status"></a>
+    <a href="https://github.com/Embedded-System-Lovers/teensy-4_nxp_iMXRT1062/blob/master/LICENSE_1_0.txt">
+        <img src="https://img.shields.io/badge/license-BSL%201.0-blue.svg" alt="Boost Software License 1.0"></a>
+</p>
 
 This repository implements an entirely manually-written, pure
 _bare_ _metal_ Blinky Project for the SiFive RISC-V FE310 SoC
