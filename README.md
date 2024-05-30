@@ -5,7 +5,7 @@ Bare metal programming on the RED-V Thing Plus board (SiFive RISC-V FE310 SoC).
 <p align="center">
     <a href="https://github.com/Embedded-System-Lovers/RED-V_SiFive_RISC-V_FE310_SoC/actions">
         <img src="https://github.com/Embedded-System-Lovers/RED-V_SiFive_RISC-V_FE310_SoC/actions/workflows/RED-V_SiFive_RISC-V_FE310_SoC.yml/badge.svg" alt="Build Status"></a>
-    <a href="https://github.com/Embedded-System-Lovers/RED-V_SiFive_RISC-V_FE310_SoC/blob/main/LICENSE">
+    <a href="https://github.com/Embedded-System-Lovers/RED-V_SiFive_RISC-V_FE310_SoC/blob/master/LICENSE">
         <img src="https://img.shields.io/badge/license-Unlicense-blue.svg" alt="Unlicense"></a>
 </p>
 
