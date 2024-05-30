@@ -71,7 +71,7 @@ in the usual `*nix` way.
 
 CI runs on pushes and pull-requests with simple
 build(s) including result verification on `ubuntu-latest`
-using GitHub Actions.
+and `macos-latest` using GitHub Actions.
 
 ## Licensing
 

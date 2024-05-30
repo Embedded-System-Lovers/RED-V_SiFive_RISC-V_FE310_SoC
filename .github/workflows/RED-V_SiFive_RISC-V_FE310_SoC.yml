@@ -5,7 +5,7 @@ on:
       - '**'
   pull_request:
 jobs:
-  target-gcc-riscv64-unknown-elf:
+  target-gcc-riscv32-unknown-elf:
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -16,17 +16,17 @@ jobs:
           fetch-depth: '0'
       - name: update-tools
         run: |
-          wget --no-check-certificate https://buildbot.embecosm.com/job/riscv32-gcc-ubuntu2204-release/6/artifact/riscv32-embecosm-ubuntu2204-gcc13.1.0.tar.gz
-          tar -xzf riscv32-embecosm-ubuntu2204-gcc13.1.0.tar.gz
+          wget --no-check-certificate https://buildbot.embecosm.com/job/riscv32-gcc-ubuntu2204-release/6/artifact/riscv32-embecosm-ubuntu2204-gcc13.2.0.tar.gz
+          tar -xzf riscv32-embecosm-ubuntu2204-gcc13.2.0.tar.gz
         working-directory: ./
-      - name: target-riscv64-unknown-elf
+      - name: target-riscv32-unknown-elf
         run: |
-          PATH=./riscv32-embecosm-ubuntu2204-gcc13.1.0/bin:$PATH
+          PATH=./riscv32-embecosm-ubuntu2204-gcc13.2.0/bin:$PATH
           echo 'query compiler version'
           riscv32-unknown-elf-g++ -v
           bash ./Rebuild.sh
           ls -la ./Output/Blinky_RedV_FE310.hex
-  target-gcc-riscv64-unknown-elf-cmake:
+  target-gcc-riscv32-unknown-elf-cmake:
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -37,14 +37,36 @@ jobs:
           fetch-depth: '0'
       - name: update-tools
         run: |
-          wget --no-check-certificate https://buildbot.embecosm.com/job/riscv32-gcc-ubuntu2204-release/6/artifact/riscv32-embecosm-ubuntu2204-gcc13.1.0.tar.gz
-          tar -xzf riscv32-embecosm-ubuntu2204-gcc13.1.0.tar.gz
+          wget --no-check-certificate https://buildbot.embecosm.com/job/riscv32-gcc-ubuntu2204-release/6/artifact/riscv32-embecosm-ubuntu2204-gcc13.2.0.tar.gz
+          tar -xzf riscv32-embecosm-ubuntu2204-gcc13.2.0.tar.gz
         working-directory: ./
-      - name: target-riscv64-unknown-elf
+      - name: target-riscv32-unknown-elf
         run: |
           mkdir -p Output && cd Output
-          PATH=../riscv32-embecosm-ubuntu2204-gcc13.1.0/bin:$PATH
+          PATH=../riscv32-embecosm-ubuntu2204-gcc13.2.0/bin:$PATH
           echo 'query compiler version'
           riscv32-unknown-elf-g++ -v
           cmake -DCMAKE_TOOLCHAIN_FILE=../cmake/toolchain-unix.cmake .. && make
           ls -la ./Blinky_RedV_FE310.hex
+  target-gcc-riscv32-unknown-elf-macos:
+    runs-on: macos-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: '0'
+      - name: update-tools
+        run: |
+          wget --no-check-certificate https://buildbot.embecosm.com/job/riscv32-gcc-macos-release/19/artifact/riscv32-embecosm-macos-gcc13.2.0.dmg
+          hdiutil attach ./riscv32-embecosm-macos-gcc13.2.0.dmg
+          cp -R /Volumes/riscv32-embecosm-macos-gcc13.2.0 ./riscv32-embecosm-macos-gcc13.2.0
+        working-directory: ./
+      - name: target-riscv32-unknown-elf
+        run: |
+          PATH="./riscv32-embecosm-macos-gcc13.2.0/bin:$PATH"
+          echo 'query compiler version'
+          riscv32-unknown-elf-g++ -v
+          bash ./Rebuild.sh
+          ls -la ./Output/Blinky_RedV_FE310.hex
