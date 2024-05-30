@@ -79,6 +79,6 @@ and `macos-latest` using GitHub Actions.
 
 ## Licensing
 
-  - The source abd build code written for this repo is licensed under [_The_ _Unlicense_](./LICENSE).
+  - The source and build code written for this repo is licensed under [_The_ _Unlicense_](./LICENSE).
   - Also the system-register file [`riscv-csr.h`](https://github.com/Embedded-System-Lovers/RED-V_SiFive_RISC-V_FE310_SoC/blob/master/Code/Mcal/riscv-csr.h), originally from [five-embedded](https://five-embeddev.com), is licenced under [_The_ _Unlicense_](./LICENSE).
 
