@@ -5,8 +5,8 @@ Bare metal programming on the RED-V Thing Plus board (SiFive RISC-V FE310 SoC).
 <p align="center">
     <a href="https://github.com/Embedded-System-Lovers/RED-V_SiFive_RISC-V_FE310_SoC/actions">
         <img src="https://github.com/Embedded-System-Lovers/RED-V_SiFive_RISC-V_FE310_SoC/actions/workflows/RED-V_SiFive_RISC-V_FE310_SoC.yml/badge.svg" alt="Build Status"></a>
-    <a href="https://github.com/Embedded-System-Lovers/RED-V_SiFive_RISC-V_FE310_SoC/blob/master/LICENSE_1_0.txt">
-        <img src="https://img.shields.io/badge/license-BSL%201.0-blue.svg" alt="Boost Software License 1.0"></a>
+    <a href="https://github.com/Embedded-System-Lovers/RED-V_SiFive_RISC-V_FE310_SoC/blob/main/LICENSE">
+        <img src="https://img.shields.io/badge/license-Unlicense-blue.svg" alt="Unlicense"></a>
 </p>
 
 This repository implements an entirely manually-written, pure
@@ -79,7 +79,6 @@ and `macos-latest` using GitHub Actions.
 
 ## Licensing
 
-The project code is licensed under BSL with the exception of
-the system-register file [`riscv-csr.h`](https://github.com/Embedded-System-Lovers/RED-V_SiFive_RISC-V_FE310_SoC/blob/master/Code/Mcal/riscv-csr.h)
-originally from [five-embedded](https://five-embeddev.com),
-which is licenced under the Unlicense.
+  - The source abd build code written for this repo is licensed under [_The_ _Unlicense_](./LICENSE).
+  - Also the system-register file [`riscv-csr.h`](https://github.com/Embedded-System-Lovers/RED-V_SiFive_RISC-V_FE310_SoC/blob/master/Code/Mcal/riscv-csr.h), originally from [five-embedded](https://five-embeddev.com), is licenced under [_The_ _Unlicense_](./LICENSE).
+
