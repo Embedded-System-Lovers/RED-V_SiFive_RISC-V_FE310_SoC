@@ -16,7 +16,7 @@ jobs:
           fetch-depth: '0'
       - name: update-tools
         run: |
-          wget --no-check-certificate https://buildbot.embecosm.com/job/riscv32-gcc-ubuntu2204-release/6/artifact/riscv32-embecosm-ubuntu2204-gcc13.2.0.tar.gz
+          wget --no-check-certificate https://buildbot.embecosm.com/job/riscv32-gcc-ubuntu2204-release/10/artifact/riscv32-embecosm-ubuntu2204-gcc13.2.0.tar.gz
           tar -xzf riscv32-embecosm-ubuntu2204-gcc13.2.0.tar.gz
         working-directory: ./
       - name: target-riscv32-unknown-elf
@@ -37,7 +37,7 @@ jobs:
           fetch-depth: '0'
       - name: update-tools
         run: |
-          wget --no-check-certificate https://buildbot.embecosm.com/job/riscv32-gcc-ubuntu2204-release/6/artifact/riscv32-embecosm-ubuntu2204-gcc13.2.0.tar.gz
+          wget --no-check-certificate https://buildbot.embecosm.com/job/riscv32-gcc-ubuntu2204-release/10/artifact/riscv32-embecosm-ubuntu2204-gcc13.2.0.tar.gz
           tar -xzf riscv32-embecosm-ubuntu2204-gcc13.2.0.tar.gz
         working-directory: ./
       - name: target-riscv32-unknown-elf
@@ -61,6 +61,7 @@ jobs:
         run: |
           wget --no-check-certificate https://buildbot.embecosm.com/job/riscv32-gcc-macos-release/19/artifact/riscv32-embecosm-macos-gcc13.2.0.dmg
           hdiutil attach ./riscv32-embecosm-macos-gcc13.2.0.dmg
+          mkdir -p riscv32-embecosm-macos-gcc13.2.0
           cp -R /Volumes/riscv32-embecosm-macos-gcc13.2.0 ./riscv32-embecosm-macos-gcc13.2.0
         working-directory: ./
       - name: target-riscv32-unknown-elf
