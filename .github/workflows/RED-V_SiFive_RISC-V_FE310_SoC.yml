@@ -42,7 +42,9 @@ jobs:
         working-directory: ./
       - name: target-riscv64-unknown-elf
         run: |
-          PATH=../riscv32-embecosm-ubuntu2204-gcc13.1.0/bin:$PATH
           mkdir -p Output && cd Output
+          PATH=../riscv32-embecosm-ubuntu2204-gcc13.1.0/bin:$PATH
+          echo 'query compiler version'
+          riscv32-unknown-elf-g++ -v
           cmake -DCMAKE_TOOLCHAIN_FILE=../cmake/toolchain-unix.cmake .. && make
           ls -la ./Blinky_RedV_FE310.hex
