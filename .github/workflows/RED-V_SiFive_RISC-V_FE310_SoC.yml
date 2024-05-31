@@ -17,11 +17,11 @@ jobs:
       - name: update-tools
         run: |
           wget --no-check-certificate https://buildbot.embecosm.com/job/riscv32-gcc-ubuntu2204-release/10/artifact/riscv32-embecosm-ubuntu2204-gcc13.2.0.tar.gz
-          tar -xzf riscv32-embecosm-ubuntu2204-gcc13.2.0.tar.gz
+          tar -xzf riscv32-embecosm-ubuntu2204-gcc13.2.0.tar.gz -C ${{ runner.workspace }}
         working-directory: ./
       - name: target-riscv32-unknown-elf
         run: |
-          PATH=./riscv32-embecosm-ubuntu2204-gcc13.2.0/bin:$PATH
+          PATH="${{ runner.workspace }}/riscv32-embecosm-macos-gcc13.2.0/bin:$PATH"
           echo 'query compiler version'
           riscv32-unknown-elf-g++ -v
           bash ./Rebuild.sh
