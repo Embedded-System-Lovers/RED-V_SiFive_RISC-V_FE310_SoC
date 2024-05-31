@@ -66,8 +66,8 @@ jobs:
         working-directory: ./
       - name: target-riscv32-unknown-elf
         run: |
-          ls -la ./riscv32-embecosm-macos-gcc13.2.0/bin
-          PATH="./riscv32-embecosm-macos-gcc13.2.0/bin:$PATH"
+          ls -la ${{ runner.workspace }}/riscv32-embecosm-macos-gcc13.2.0/bin
+          PATH="${{ runner.workspace }}/riscv32-embecosm-macos-gcc13.2.0/bin:$PATH"
           echo 'query compiler version'
           riscv32-unknown-elf-g++ -v
           bash ./Rebuild.sh
