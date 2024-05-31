@@ -62,7 +62,7 @@ jobs:
           wget --no-check-certificate https://buildbot.embecosm.com/job/riscv32-gcc-macos-release/19/artifact/riscv32-embecosm-macos-gcc13.2.0.dmg
           hdiutil attach ./riscv32-embecosm-macos-gcc13.2.0.dmg
           cd /Volumes/riscv32-embecosm-macos-gcc13.2.0
-          mv ./riscv32-embecosm-macos-gcc13.2.0 ${{ runner.workspace }}
+          cp -r ./riscv32-embecosm-macos-gcc13.2.0 ${{ runner.workspace }}
         working-directory: ./
       - name: target-riscv32-unknown-elf
         run: |
