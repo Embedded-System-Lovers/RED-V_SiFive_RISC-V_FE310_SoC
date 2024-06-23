@@ -15,12 +15,18 @@
   
 ******************************************************************************************/
 
+// cd /mnt/c/Users/ckorm/Documents/Ks/uC_Software/Boards/RED-V_SiFive_RISC-V_FE310_SoC
+// wget --no-check-certificate https://buildbot.embecosm.com/job/riscv32-gcc-ubuntu2204-release/10/artifact/riscv32-embecosm-ubuntu2204-gcc13.2.0.tar.gz
+// tar -xzf riscv32-embecosm-ubuntu2204-gcc13.2.0.tar.gz -C /mnt/c/Users/ckorm/Documents/Ks/uC_Software/Boards/RED-V_SiFive_RISC-V_FE310_SoC
+// PATH="/mnt/c/Users/ckorm/Documents/Ks/uC_Software/Boards/RED-V_SiFive_RISC-V_FE310_SoC/riscv32-embecosm-ubuntu2204-gcc13.2.0/bin:$PATH"
+// bash ./Rebuild.sh
+
 //=====================================================================================================
 // Includes
 //=====================================================================================================
-#include "FE310.h"
-#include "mtimer.h"
-#include "riscv-csr.h"
+#include <FE310.h>
+#include <mtimer.h>
+#include <riscv-csr.h>
 
 #define MTIME_TIMEOUT_LED_PHASE 1000U
 
@@ -71,5 +77,3 @@ void Isr_MachineTimerInterrupt(void)
   /* reload the mtimer */
   mtimer_ReloadTimer(MTIME_TIMEOUT_MS(MTIME_TIMEOUT_LED_PHASE));
 }
-
-

@@ -13,11 +13,17 @@
     <Filter Include="Code">
       <UniqueIdentifier>{685e5da8-bb6f-4f61-bafa-855ae8316286}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Code\Mcal">
-      <UniqueIdentifier>{b18bc57a-f6e6-4a7e-94f1-0e741870dbaa}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Code\Startup">
       <UniqueIdentifier>{a41951c5-2a67-4402-9518-95337fc7a4a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Mcal">
+      <UniqueIdentifier>{b18bc57a-f6e6-4a7e-94f1-0e741870dbaa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include=".github">
+      <UniqueIdentifier>{8bd596ee-2b15-4fe2-b514-484ef7efc85c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include=".github\workflows">
+      <UniqueIdentifier>{4f794441-a60f-4b21-a720-73332904f080}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -66,6 +72,9 @@
     <None Include="Makefile">
       <Filter>build</Filter>
     </None>
+    <None Include="..\.github\workflows\RED-V_SiFive_RISC-V_FE310_SoC.yml">
+      <Filter>.github\workflows</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\CMakeLists.txt">
@@ -74,33 +83,33 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Code\Mcal\Clock.h">
-      <Filter>Code\Mcal</Filter>
+      <Filter>Mcal</Filter>
     </ClInclude>
     <ClInclude Include="..\Code\Mcal\FE310.h">
-      <Filter>Code\Mcal</Filter>
+      <Filter>Mcal</Filter>
     </ClInclude>
     <ClInclude Include="..\Code\Mcal\Mcu.h">
-      <Filter>Code\Mcal</Filter>
+      <Filter>Mcal</Filter>
     </ClInclude>
     <ClInclude Include="..\Code\Mcal\mtimer.h">
-      <Filter>Code\Mcal</Filter>
+      <Filter>Mcal</Filter>
     </ClInclude>
     <ClInclude Include="..\Code\Mcal\Platform_Types.h">
-      <Filter>Code\Mcal</Filter>
+      <Filter>Mcal</Filter>
     </ClInclude>
     <ClInclude Include="..\Code\Mcal\riscv-csr.h">
-      <Filter>Code\Mcal</Filter>
+      <Filter>Mcal</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Code\Mcal\Mcu.c">
-      <Filter>Code\Mcal</Filter>
+      <Filter>Mcal</Filter>
     </ClCompile>
     <ClCompile Include="..\Code\Mcal\mtimer.c">
-      <Filter>Code\Mcal</Filter>
+      <Filter>Mcal</Filter>
     </ClCompile>
     <ClCompile Include="..\Code\Mcal\Clock.c">
-      <Filter>Code\Mcal</Filter>
+      <Filter>Mcal</Filter>
     </ClCompile>
     <ClCompile Include="..\Code\Startup\intvect.c">
       <Filter>Code\Startup</Filter>

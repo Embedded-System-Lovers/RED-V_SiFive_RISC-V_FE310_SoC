@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\.github\workflows\RED-V_SiFive_RISC-V_FE310_SoC.yml" />
     <None Include="..\.gitignore" />
     <None Include="..\Build.sh" />
     <None Include="..\Clean.sh" />
@@ -84,11 +85,15 @@
     <NMakeBuildCommandLine>make all TYP_CC=LLVM</NMakeBuildCommandLine>
     <NMakeReBuildCommandLine>make all TYP_CC=LLVM</NMakeReBuildCommandLine>
     <NMakeCleanCommandLine>make clean TYP_CC=LLVM</NMakeCleanCommandLine>
+    <NMakeIncludeSearchPath>$(SolutionDir)../Code;$(SolutionDir)../Code/Mcal;</NMakeIncludeSearchPath>
+    <NMakePreprocessorDefinitions>__attribute__()=</NMakePreprocessorDefinitions>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Blinky_RedV_FE310 GCC|x64'">
     <NMakeBuildCommandLine>make all TYP_CC=GCC</NMakeBuildCommandLine>
     <NMakeReBuildCommandLine>make all TYP_CC=GCC</NMakeReBuildCommandLine>
     <NMakeCleanCommandLine>make clean TYP_CC=GCC</NMakeCleanCommandLine>
+    <NMakeIncludeSearchPath>$(SolutionDir)../Code;$(SolutionDir)../Code/Mcal;</NMakeIncludeSearchPath>
+    <NMakePreprocessorDefinitions>__attribute__()=</NMakePreprocessorDefinitions>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Blinky_RedV_FE310 LLVM|x64'">
     <ClCompile>
