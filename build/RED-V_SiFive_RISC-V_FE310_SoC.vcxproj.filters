@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="_root">
+      <UniqueIdentifier>{aa3c5d75-0405-47a8-8157-afc0fe4ee518}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="build">
+      <UniqueIdentifier>{19cc795f-747a-44c7-a9dd-3a27c16323c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cmake">
+      <UniqueIdentifier>{13969b6e-5a44-4293-8f83-fae25211d854}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Code">
+      <UniqueIdentifier>{685e5da8-bb6f-4f61-bafa-855ae8316286}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Code\Mcal">
+      <UniqueIdentifier>{b18bc57a-f6e6-4a7e-94f1-0e741870dbaa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Code\Startup">
+      <UniqueIdentifier>{a41951c5-2a67-4402-9518-95337fc7a4a7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\.gitignore">
+      <Filter>_root</Filter>
+    </None>
+    <None Include="..\Build.sh">
+      <Filter>_root</Filter>
+    </None>
+    <None Include="..\Clean.sh">
+      <Filter>_root</Filter>
+    </None>
+    <None Include="..\CompilerErrorFormater.py">
+      <Filter>_root</Filter>
+    </None>
+    <None Include="..\e310x.svd">
+      <Filter>_root</Filter>
+    </None>
+    <None Include="..\LICENSE">
+      <Filter>_root</Filter>
+    </None>
+    <None Include="..\Makefile">
+      <Filter>_root</Filter>
+    </None>
+    <None Include="..\README.md">
+      <Filter>_root</Filter>
+    </None>
+    <None Include="..\Rebuild.sh">
+      <Filter>_root</Filter>
+    </None>
+    <None Include="..\RedV.jdebug">
+      <Filter>_root</Filter>
+    </None>
+    <None Include="..\RedV.jflash">
+      <Filter>_root</Filter>
+    </None>
+    <None Include="..\cmake\toolchain-unix.cmake">
+      <Filter>cmake</Filter>
+    </None>
+    <None Include="..\Code\Startup\boot.s">
+      <Filter>Code\Startup</Filter>
+    </None>
+    <None Include="..\Code\Memory_Map.ld">
+      <Filter>Code</Filter>
+    </None>
+    <None Include="Makefile">
+      <Filter>build</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\CMakeLists.txt">
+      <Filter>_root</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Code\Mcal\Clock.h">
+      <Filter>Code\Mcal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code\Mcal\FE310.h">
+      <Filter>Code\Mcal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code\Mcal\Mcu.h">
+      <Filter>Code\Mcal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code\Mcal\mtimer.h">
+      <Filter>Code\Mcal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code\Mcal\Platform_Types.h">
+      <Filter>Code\Mcal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code\Mcal\riscv-csr.h">
+      <Filter>Code\Mcal</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Code\Mcal\Mcu.c">
+      <Filter>Code\Mcal</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\Mcal\mtimer.c">
+      <Filter>Code\Mcal</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\Mcal\Clock.c">
+      <Filter>Code\Mcal</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\Startup\intvect.c">
+      <Filter>Code\Startup</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\Startup\Startup.c">
+      <Filter>Code\Startup</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\main.c">
+      <Filter>Code</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

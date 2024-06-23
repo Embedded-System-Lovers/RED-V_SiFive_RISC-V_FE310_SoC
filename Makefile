@@ -122,9 +122,12 @@ CPPOPS  = $(OPT)                                        \
 ############################################################################################
 
 ifeq ($(AS), $(TOOLCHAIN)-as)
+
 ASOPS =  -march=rv32imac          \
-         -alh 
+         -alh
+
 else
+
 ASOPS = $(OPT)                                        \
         $(ARCH)                                       \
         -ffast-math                                   \
@@ -151,21 +154,25 @@ ASOPS = $(OPT)                                        \
         -fno-enforce-eh-specs                         \
         -ftemplate-depth=128                          \
         -Wzero-as-null-pointer-constant
+
 endif
+
 ############################################################################################
 # Linker flags
 ############################################################################################
 
 ifeq ($(LD), $(TOOLCHAIN)-ld)
+
   LOPS = -nostartfiles                          \
          -nostdlib                              \
          -e _start                              \
          --print-memory-usage                   \
          --print-map                            \
          -dT $(LD_SCRIPT)                       \
-         -Map=$(OUTPUT_DIR)/$(PRJ_NAME).map     
+         -Map=$(OUTPUT_DIR)/$(PRJ_NAME).map
 
 else
+
   LOPS = -nostartfiles                          \
          -e Startup_Init                        \
          $(ARCH)                                \
@@ -176,6 +183,7 @@ else
          -Wl,-Map=$(OUTPUT_DIR)/$(PRJ_NAME).map \
          --specs=nano.specs                     \
          --specs=nosys.specs
+
 endif
 
 ############################################################################################
@@ -193,6 +201,7 @@ SRC_FILES := $(SRC_DIR)/Mcal/mtimer.c     \
 ############################################################################################
 # Include Paths
 ############################################################################################
+
 INC_FILES := $(SRC_DIR)          \
              $(SRC_DIR)/Mcal
 
